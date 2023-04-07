@@ -10,7 +10,9 @@ const usersRoute = require('./routes/users');
 dotenv.config();
 
 //connect to db
-mongoose.connect(process.env.DB_CONNECTION_URL);
+mongoose.connect(process.env.DB_CONNECTION_URL).finally(()=> {
+  console.log('DB Connected!');
+});
 
 //Middleware
 app.use(express.json())
